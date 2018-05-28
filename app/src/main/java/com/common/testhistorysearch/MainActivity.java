@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.common.testhistorysearch.utils.KeyBoardUtil;
 import com.common.testhistorysearch.utils.StorageListSPUtils;
 import com.common.testhistorysearch.widget.FakeBoldTextView;
 import com.common.testhistorysearch.widget.FlowLayout;
@@ -134,6 +135,10 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 // 存取 SharedPreferences 中存储的搜索历史并做相应的处理
                 processAction();
+                // 点击软件盘搜索后，隐藏软键盘
+                if (null != getCurrentFocus()) {
+                    KeyBoardUtil.hideKeyboard(getCurrentFocus(), MainActivity.this);
+                }
                 return true;
             }
         }
