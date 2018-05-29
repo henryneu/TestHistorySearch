@@ -11,6 +11,10 @@ import com.common.testhistorysearch.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by zhouzhenhua on 2018/5/24.
+ * FlowLayout 类
+ */
 
 public class FlowLayout extends ViewGroup {
 
@@ -46,41 +50,52 @@ public class FlowLayout extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        // 获取父容器 ViewGroup 的 Padding
         int mPaddingLeft = getPaddingLeft();
         int mPaddingRight = getPaddingRight();
         int mPaddingTop = getPaddingTop();
         int mPaddingBottom = getPaddingBottom();
 
+        // 获得父容器 ViewGroup 为子 View 设置的测量模式和大小
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+
         int lineUsed = mPaddingLeft + mPaddingRight;
         int lineY = mPaddingTop;
+        // 记录每一行的高度值
         int lineHeight = 0;
+        // 循环遍历所有的子 View
         for (int i = 0; i < this.getChildCount(); i++) {
             View child = this.getChildAt(i);
             if (child.getVisibility() == GONE) {
                 continue;
             }
+            // 记录宽高值
             int spaceWidth = 0;
             int spaceHeight = 0;
+            // 获取父容器 ViewGroup 为子 View 设置的 布局
             LayoutParams childLp = child.getLayoutParams();
             if (childLp instanceof MarginLayoutParams) {
+                // 测量每一个子 View 的实际宽高值
                 measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, lineY);
                 MarginLayoutParams mlp = (MarginLayoutParams) childLp;
                 spaceWidth = mlp.leftMargin + mlp.rightMargin;
                 spaceHeight = mlp.topMargin + mlp.bottomMargin;
             } else {
+                // 测量每一个子 View 的宽高值
                 measureChild(child, widthMeasureSpec, heightMeasureSpec);
             }
 
             int childWidth = child.getMeasuredWidth();
             int childHeight = child.getMeasuredHeight();
+            // 得到子 View 所占据的实际宽高值
             spaceWidth += childWidth;
             spaceHeight += childHeight;
 
             if (lineUsed + spaceWidth > widthSize) {
-                //approach the limit of width and move to next line
+                // 达到宽度的限制，移动到下一行
                 lineY += lineHeight + lineSpacing;
                 lineUsed = mPaddingLeft + mPaddingRight;
                 lineHeight = 0;
@@ -144,7 +159,7 @@ public class FlowLayout extends ViewGroup {
             spaceHeight += childHeight;
 
             if (lineUsed + spaceWidth > lineWidth) {
-                //approach the limit of width and move to next line
+                // 达到宽度的限制，移动到下一行
                 lineNumList.add(lineNum);
                 lineY += lineHeight + lineSpacing;
                 lineUsed = mPaddingLeft + mPaddingRight;
@@ -164,6 +179,7 @@ public class FlowLayout extends ViewGroup {
                     bottom = lineY + childHeight;
                 }
             }
+            // 子 View 设置计算后在布局中的位置
             child.layout(left, top, right, bottom);
             lineNum ++;
             if (spaceHeight > lineHeight) {
@@ -172,7 +188,7 @@ public class FlowLayout extends ViewGroup {
             lineUsed += spaceWidth;
             lineX += spaceWidth;
         }
-        // add the num of last line
+        // 添加最后一行的 Num
         lineNumList.add(lineNum);
     }
 
@@ -187,6 +203,7 @@ public class FlowLayout extends ViewGroup {
             }
         });
     }
+
     private void compress() {
         int childCount = this.getChildCount();
         if (0 == childCount) {

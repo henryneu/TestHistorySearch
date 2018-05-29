@@ -171,6 +171,17 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
                 } else {
                     mSearchHistoryLists.add(searchInput);
                 }
+            } else {
+                // 如果搜索历史已存在，找到其所在的下标值
+                int inputIndex = -1;
+                for (int i = 0; i< mSearchHistoryLists.size(); i++) {
+                    if (searchInput.equals(mSearchHistoryLists.get(i))) {
+                        inputIndex = i;
+                    }
+                }
+                // 如果搜索历史已存在，先从 List 集合中移除再添加到集合的最后
+                mSearchHistoryLists.remove(inputIndex);
+                mSearchHistoryLists.add(mSearchHistoryLists.size(), searchInput);
             }
             // 存储新的搜索历史到 SharedPreferences
             mStorageListSPUtils.saveDataList(TAG_SEARCH_HISTORY, mSearchHistoryLists);

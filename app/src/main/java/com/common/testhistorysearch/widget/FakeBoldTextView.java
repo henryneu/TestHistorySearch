@@ -14,9 +14,8 @@ import android.util.AttributeSet;
 
 import com.common.testhistorysearch.R;
 
-
 /**
- * Created by cathcool on 2017/12/15.
+ * Created by zhouzhenhua on 2018/5/24.
  */
 
 public class FakeBoldTextView extends AppCompatTextView {
@@ -29,7 +28,7 @@ public class FakeBoldTextView extends AppCompatTextView {
     private static final float BOLD_SIZE_MEDIUM = 1.3f;
     private static final float BOLD_SIZE_BOLD = 1.5f;
 
-    private CharSequence fullText; // 原始文本
+    private CharSequence fullText;        // 原始文本
     private boolean programmaticChange;
     private boolean isStale;
     private float boldSize = BOLD_SIZE_NORMAL;
@@ -58,7 +57,7 @@ public class FakeBoldTextView extends AppCompatTextView {
     protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
         super.onTextChanged(text, start, lengthBefore, lengthAfter);
         if (!programmaticChange) {
-            fullText = text;//拿到原始文本
+            fullText = text;    // 拿到原始文本
             isStale = true;
         }
     }
@@ -91,8 +90,7 @@ public class FakeBoldTextView extends AppCompatTextView {
     }
 
     private void setTextStyle(CharSequence text) {
-        //this.getPaint().setFakeBoldText(true);
-        SpannableStringBuilder spannable = new SpannableStringBuilder(text);//用于可变字符串
+        SpannableStringBuilder spannable = new SpannableStringBuilder(text);  // 用于可变字符串
         spannable.setSpan(new CharSpannable(), 0, getText().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         this.setText(spannable);
     }
