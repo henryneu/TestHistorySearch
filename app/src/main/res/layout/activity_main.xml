@@ -73,7 +73,7 @@
             android:minWidth="0dp"
             android:textSize="18sp"
             android:textColor="#FFA5A5A5"
-            android:text="@string/app_delete_cancle"
+            android:text="@string/app_delete_cancel"
             app:boldStyle="medium" />
 
     </LinearLayout>

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
@@ -97,6 +98,11 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
         mSearchHistoryLists = new ArrayList<>();
         // 初始化存储 搜索历史集合 的工具类
         mStorageListSPUtils = new StorageListSPUtils(this, TAG);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return super.dispatchTouchEvent(ev);
     }
 
     /**

@@ -7,5 +7,8 @@
     <string name="app_search_history">历史搜索</string>
     <string name="app_commit_delete_history">确认删除所有搜索历史吗？</string>
     <string name="app_delete_confirm">确认</string>
-    <string name="app_delete_cancle">取消</string>
+    <string name="app_delete_cancel">取消</string>
+    <string name="app_search_list_item_name">张三</string>
+    <string name="app_search_list_item_phone">13066668888</string>
+
 </resources>

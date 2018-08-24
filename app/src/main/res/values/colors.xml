@@ -6,5 +6,7 @@
 
     <color name="search_history_selected_c_text">#FF5079F0</color>
     <color name="search_history_selrct_c_text">#FF333333</color>
+    <color name="search_result_item_name_c_text">#59A3FF</color>
+    <color name="search_result_item_phone_c_text">#418CFE</color>
 
 </resources>

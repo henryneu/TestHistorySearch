@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/app_search_list_item_padding"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/search_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_search_list_item_name"
+        android:textSize="@dimen/app_search_list_item_text_size"
+        android:textColor="@color/search_result_item_name_c_text"/>
+
+    <TextView
+        android:id="@+id/search_phone_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_search_list_item_phone"
+        android:textSize="@dimen/app_search_list_item_text_size"
+        android:textColor="@color/search_result_item_phone_c_text"/>
+
+</LinearLayout>
